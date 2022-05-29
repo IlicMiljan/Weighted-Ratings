@@ -4,26 +4,27 @@ namespace IlicMiljan\WeightedRatings\Formula;
 
 use IlicMiljan\WeightedRatings\Collection\CollectionInterface;
 use IlicMiljan\WeightedRatings\Collection\RatingsCountCollection;
+use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
 use IlicMiljan\WeightedRatings\Exception\EmptyCollectionException;
 
 class BayesianApproximation implements FormulaInterface
 {
     private CollectionInterface $ratings;
-    private float $confidence;
+    private RatingWeightConfig $ratingWeightConfig;
 
     /**
      * @throws EmptyCollectionException
      */
     public function __construct(
         CollectionInterface $ratings,
-        float $confidence = self::DEFAULT_CONFIDENCE
+        RatingWeightConfig $ratingWeightConfig
     ) {
         if($ratings->isEmpty()) {
             throw new EmptyCollectionException("Collection cannot be empty.");
         }
 
         $this->ratings = $ratings;
-        $this->confidence = $confidence;
+        $this->ratingWeightConfig = $ratingWeightConfig;
     }
 
     public function calculateWeight(): float
