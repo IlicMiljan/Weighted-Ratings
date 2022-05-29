@@ -26,7 +26,13 @@
         "phpcompatibility/php-compatibility": "*"
     },
     "scripts": {
-        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
-        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+        "post-install-cmd": [
+            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+            "./vendor/bin/phpunit"
+        ],
+        "post-update-cmd" : [
+            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+            "./vendor/bin/phpunit"
+        ]
     }
 }
