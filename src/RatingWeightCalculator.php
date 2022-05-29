@@ -6,7 +6,6 @@ use IlicMiljan\WeightedRatings\Collection\CollectionInterface;
 use IlicMiljan\WeightedRatings\Collection\RatingsCountCollection;
 use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
 use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
-use IlicMiljan\WeightedRatings\Exception\InvalidFormulaException;
 use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 use IlicMiljan\WeightedRatings\Formula\AbstractFormula;
 use IlicMiljan\WeightedRatings\Formula\BayesianApproximation;
@@ -42,7 +41,6 @@ class RatingWeightCalculator
     /**
      * @throws InvalidTypeException
      * @throws Exception\EmptyCollectionException
-     * @throws InvalidFormulaException
      * @throws InvalidConfigurationException
      */
     public function calculateWeight(array $ratingsCountPerStar): float {
@@ -55,7 +53,6 @@ class RatingWeightCalculator
 
     /**
      * @throws Exception\EmptyCollectionException
-     * @throws InvalidFormulaException
      * @throws InvalidConfigurationException
      */
     private function loadFormula(CollectionInterface $collection): AbstractFormula
@@ -78,6 +75,6 @@ class RatingWeightCalculator
             );
         }
 
-        throw new InvalidFormulaException();
+        throw new InvalidConfigurationException("Specified formula is not supported.");
     }
 }
