@@ -7,7 +7,7 @@ use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 class RatingsCountCollection implements CollectionInterface
 {
     /** @var int[] $list */
-    private array $list = [];
+    private array $list;
 
     /**
      * @param mixed ...$ratings
@@ -59,10 +59,13 @@ class RatingsCountCollection implements CollectionInterface
      * @return void
      * @throws InvalidTypeException
      */
-    private function validateElement(...$elements): void {
+    private function validateElement(...$elements): void
+    {
         foreach ($elements as $element) {
             if (!is_int($element)) {
-                throw new InvalidTypeException("Collection element must be of the type int, " . gettype($element) . " given.");
+                throw new InvalidTypeException(
+                    "Collection element must be of the type int, " . gettype($element) . " given."
+                );
             }
         }
     }

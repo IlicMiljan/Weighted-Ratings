@@ -34,5 +34,6 @@ interface CollectionInterface
      *
      * @return bool
      */
-    public function isEmpty(): bool;
+    public function isEmpty():
+    bool;
 }

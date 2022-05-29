@@ -21,7 +21,7 @@ class BayesianApproximation extends AbstractFormula
         $firstPart = 0.0;
         $secondPart = 0.0;
 
-        foreach($this->ratings->all() as $index => $value) {
+        foreach ($this->ratings->all() as $index => $value) {
             $firstPart += ($index + 1) * ($value + 1) / ($N + $K);
             $secondPart += ($index + 1) * ($index + 1) * ($value + 1) / ($N + $K);
         }

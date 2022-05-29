@@ -18,7 +18,7 @@ abstract class AbstractFormula
         CollectionInterface $ratings,
         RatingWeightConfig $ratingWeightConfig
     ) {
-        if($ratings->isEmpty()) {
+        if ($ratings->isEmpty()) {
             throw new EmptyCollectionException("Collection cannot be empty.");
         }
 
@@ -26,5 +26,5 @@ abstract class AbstractFormula
         $this->ratingWeightConfig = $ratingWeightConfig;
     }
 
-    public abstract function calculateWeight(): float;
+    abstract public function calculateWeight(): float;
 }

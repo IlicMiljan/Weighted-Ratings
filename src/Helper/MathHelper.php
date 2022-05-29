@@ -17,8 +17,8 @@ class MathHelper
 
         $signOfX = (($x < 0) ? -1.0 : 1.0 );
 
-        $result = sqrt( $b**2 - log(1 - $x**2) / $a);
-        $result = sqrt( $result - $b);
+        $result = sqrt($b**2 - log(1 - $x**2) / $a);
+        $result = sqrt($result - $b);
 
         return $result * $signOfX;
     }

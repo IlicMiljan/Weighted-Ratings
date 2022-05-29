@@ -4,7 +4,7 @@ namespace IlicMiljan\WeightedRatings\Config;
 
 class RatingWeightConfig
 {
-    private ?string $formula = null;
+    private ?string $formula;
     private float $confidence;
     private int $assumeNegativeRatingIsLessThan;
 

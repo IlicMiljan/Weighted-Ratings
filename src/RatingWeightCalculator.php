@@ -43,7 +43,8 @@ class RatingWeightCalculator
      * @throws Exception\EmptyCollectionException
      * @throws InvalidConfigurationException
      */
-    public function calculateWeight(array $ratingsCountPerStar): float {
+    public function calculateWeight(array $ratingsCountPerStar): float
+    {
         $ratingsCountCollection = new RatingsCountCollection(...$ratingsCountPerStar);
 
         $formula = $this->loadFormula($ratingsCountCollection);
