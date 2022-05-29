@@ -25,4 +25,11 @@ by Composer and they are not part of Weighted Ratings Library.
 # Usage
 
 TBD
+
+# Testing
+To run Unit Tests inside this library you can use this command:
+
+```
+./vendor/bin/phpunit
+```
  
