@@ -10,7 +10,6 @@ use IlicMiljan\WeightedRatings\Exception\InvalidFormulaException;
 use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 use IlicMiljan\WeightedRatings\Formula\AbstractFormula;
 use IlicMiljan\WeightedRatings\Formula\BayesianApproximation;
-use IlicMiljan\WeightedRatings\Formula\FormulaInterface;
 use IlicMiljan\WeightedRatings\Formula\WilsonLowerBound;
 
 class RatingWeightCalculator
