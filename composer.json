@@ -1,0 +1,16 @@
+{
+    "name": "ilicmiljan/weighted-ratings",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "IlicMiljan\\WeightedRatings\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Miljan Ilić",
+            "email": "hello@miljanilic.com"
+        }
+    ],
+    "require": {}
+}
