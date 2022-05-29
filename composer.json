@@ -15,5 +15,7 @@
             "email": "hello@miljanilic.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
