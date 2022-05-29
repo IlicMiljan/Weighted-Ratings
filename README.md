@@ -6,7 +6,7 @@ A lightweight PHP library for calculating the **Wilson Lower Bound Score** and
 **Bayesian Approximation** weights for sorting algorithms based on user feedback.
 
 # Installation
-**Weighted Ratings* Library is available via Composer. Just add this line to 
+**Weighted Ratings** Library is available via Composer. Just add this line to 
 your `composer.json` file:
 
 ```
