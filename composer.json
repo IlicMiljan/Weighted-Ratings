@@ -1,5 +1,7 @@
 {
     "name": "ilicmiljan/weighted-ratings",
+    "description": "A lightweight PHP library for calculating the Wilson Lower Bound Score and Bayesian Approximation weights for sorting algorithms based on user feedback.",
+    "keywords": ["rating", "review", "weight", "weighted-ratings", "sorting-weights", "reviews-sorting"],
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -15,7 +17,16 @@
             "email": "hello@miljanilic.com"
         }
     ],
+    "license": "MIT",
     "require": {
-        "phpunit/phpunit": "^9.5"
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpcompatibility/php-compatibility": "*"
+    },
+    "scripts": {
+        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
     }
 }
