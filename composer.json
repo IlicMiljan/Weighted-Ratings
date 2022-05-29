@@ -4,7 +4,10 @@
     "autoload": {
         "psr-4": {
             "IlicMiljan\\WeightedRatings\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
     },
     "authors": [
         {
