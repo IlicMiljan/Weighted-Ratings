@@ -10,7 +10,7 @@ class WilsonLowerBound extends AbstractFormula
 
     public function calculateWeight(): float
     {
-        if ($this->ratings->isEmpty()) {
+        if ($this->ratings->sum() === 0) {
             return 0.0;
         }
 
