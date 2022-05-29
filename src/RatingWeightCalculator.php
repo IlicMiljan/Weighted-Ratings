@@ -13,8 +13,8 @@ use IlicMiljan\WeightedRatings\Formula\WilsonLowerBound;
 
 class RatingWeightCalculator
 {
-    public const RATING_WEIGHT_FORMULA_WILSON_LOWER_BOUND = 'wilson_lower_bound';
-    public const RATING_WEIGHT_FORMULA_BAYESIAN_APPROXIMATION = 'bayesian_approximation';
+    public const FORMULA_WILSON_LOWER_BOUND = 'wilson_lower_bound';
+    public const FORMULA_BAYESIAN_APPROXIMATION = 'bayesian_approximation';
 
     private RatingWeightConfig $ratingWeightConfig;
 
@@ -61,14 +61,14 @@ class RatingWeightCalculator
             throw new InvalidConfigurationException("Formula is not configured.");
         }
 
-        if ($this->ratingWeightConfig->getFormula() === self::RATING_WEIGHT_FORMULA_WILSON_LOWER_BOUND) {
+        if ($this->ratingWeightConfig->getFormula() === self::FORMULA_WILSON_LOWER_BOUND) {
             return new WilsonLowerBound(
                 $collection,
                 $this->ratingWeightConfig
             );
         }
 
-        if ($this->ratingWeightConfig->getFormula() === self::RATING_WEIGHT_FORMULA_BAYESIAN_APPROXIMATION) {
+        if ($this->ratingWeightConfig->getFormula() === self::FORMULA_BAYESIAN_APPROXIMATION) {
             return new BayesianApproximation(
                 $collection,
                 $this->ratingWeightConfig
