@@ -55,6 +55,14 @@ class RatingsCountCollection implements CollectionInterface
     }
 
     /**
+     * @inheritDoc
+     */
+    public function sum(): int
+    {
+        return array_sum($this->list);
+    }
+
+    /**
      * @param mixed ...$elements
      * @return void
      * @throws InvalidTypeException

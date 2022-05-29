@@ -34,6 +34,12 @@ interface CollectionInterface
      *
      * @return bool
      */
-    public function isEmpty():
-    bool;
+    public function isEmpty(): bool;
+
+    /**
+     * Returns sum of all list elements
+     *
+     * @return int
+     */
+    public function sum(): int;
 }

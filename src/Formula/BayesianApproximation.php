@@ -9,8 +9,7 @@ class BayesianApproximation extends AbstractFormula
 
     public function calculateWeight(): float
     {
-        // TODO: Add sum() to Collection
-        if (array_sum($this->ratings->all()) === 0) {
+        if ($this->ratings->sum() === 0) {
             return 0.0;
         }
 
