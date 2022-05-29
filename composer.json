@@ -22,16 +22,13 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "phpcompatibility/php-compatibility": "*"
+        "phpunit/phpunit": "^9.5"
     },
     "scripts": {
         "post-install-cmd": [
-            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
             "./vendor/bin/phpunit"
         ],
         "post-update-cmd" : [
-            "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
             "./vendor/bin/phpunit"
         ]
     }
