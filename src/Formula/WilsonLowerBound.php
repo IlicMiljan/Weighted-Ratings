@@ -6,7 +6,6 @@ use IlicMiljan\WeightedRatings\Helper\MathHelper;
 
 final class WilsonLowerBound extends AbstractFormula
 {
-
     public function calculateWeight(): float
     {
         if ($this->ratings->sum() === 0) {

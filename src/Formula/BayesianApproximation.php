@@ -6,7 +6,6 @@ use IlicMiljan\WeightedRatings\Helper\MathHelper;
 
 final class BayesianApproximation extends AbstractFormula
 {
-
     public function calculateWeight(): float
     {
         if ($this->ratings->sum() === 0) {
@@ -25,7 +24,7 @@ final class BayesianApproximation extends AbstractFormula
             $secondPart += ($index + 1) * ($index + 1) * ($value + 1) / ($N + $K);
         }
 
-        return $firstPart - $z * sqrt(($secondPart - $firstPart**2) / ($N + $K + 1));
+        return $firstPart - $z * sqrt(($secondPart - $firstPart ** 2) / ($N + $K + 1));
     }
 
     private function calculateZ(float $confidence): float
