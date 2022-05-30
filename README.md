@@ -22,9 +22,30 @@ composer require ilicmiljan/weighted-ratings
 Note that the `vendor` folder and the `vendor/autoload.php` script are generated 
 by Composer and they are not part of Weighted Ratings Library.
 
-# Usage
+# Configuration
 
 TBD
+
+# Usage
+
+### With Default Config Parameters
+
+``` php
+$weightCalculator = new RatingWeightCalculator();
+
+$ratingWeight = $calculator->formula(RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND)
+    ->calculateWeight([2,4,6,12,24]);
+```
+
+### With Custom Parameters
+
+``` php
+$weightCalculator = new RatingWeightCalculator(
+    new RatingWeightConfig(RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND, 5, 0.9)
+);
+
+$ratingWeight = $calculator->calculateWeight([2,4,6,12,24]);
+```
 
 # Testing
 To run Unit Tests inside this library you can use this command:
