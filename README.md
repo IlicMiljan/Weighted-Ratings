@@ -55,8 +55,8 @@ To run Unit Tests inside this library you can use this command:
 ```
 
 ### Infection PHP Metrics:
-- Mutation Score Indicator (MSI): **95%**
+- Mutation Score Indicator (MSI): **98%**
 - Mutation Code Coverage: **100%**
-- Covered Code MSI: **95%**
+- Covered Code MSI: **98%**
 
  
