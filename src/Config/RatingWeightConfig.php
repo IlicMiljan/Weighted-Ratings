@@ -2,78 +2,91 @@
 
 namespace IlicMiljan\WeightedRatings\Config;
 
+use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
+
 class RatingWeightConfig
 {
+    private const DEFAULT_ASSUME_NEGATIVE_RATING_IS_LESS_THAN = 3;
+    private const DEFAULT_CONFIDENCE = 0.95;
+
     private ?string $formula;
     private float $confidence;
     private int $assumeNegativeRatingIsLessThan;
 
     /**
-     * @param ?string $formula
-     * @param int $assumeNegativeRatingIsLessThan
-     * @param float $confidence
+     * @throws InvalidConfigurationException
      */
     public function __construct(
         ?string $formula = null,
-        int $assumeNegativeRatingIsLessThan = 3,
-        float $confidence = 0.95
+        int $assumeNegativeRatingIsLessThan = self::DEFAULT_ASSUME_NEGATIVE_RATING_IS_LESS_THAN,
+        float $confidence = self::DEFAULT_CONFIDENCE
     ) {
+        $this->validateConfidence($confidence);
+        $this->validateAssumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
+
         $this->formula = $formula;
         $this->assumeNegativeRatingIsLessThan = $assumeNegativeRatingIsLessThan;
         $this->confidence = $confidence;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFormula(): ?string
     {
         return $this->formula;
     }
 
-    /**
-     * @param string $formula
-     * @return RatingWeightConfig
-     */
     public function formula(string $formula): RatingWeightConfig
     {
         $this->formula = $formula;
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getConfidence(): float
     {
         return $this->confidence;
     }
 
     /**
-     * @param float $confidence
-     * @return RatingWeightConfig
+     * @throws InvalidConfigurationException
      */
     public function confidence(float $confidence): RatingWeightConfig
     {
+        $this->validateConfidence($confidence);
         $this->confidence = $confidence;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getAssumeNegativeRatingIsLessThan(): int
     {
         return $this->assumeNegativeRatingIsLessThan;
     }
 
     /**
-     * @param int $assumeNegativeRatingIsLessThan
-     * @return RatingWeightConfig
+     * @throws InvalidConfigurationException
      */
     public function assumeNegativeRatingIsLessThan(int $assumeNegativeRatingIsLessThan): RatingWeightConfig
     {
+        $this->validateAssumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
         $this->assumeNegativeRatingIsLessThan = $assumeNegativeRatingIsLessThan;
         return $this;
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    private function validateConfidence(float $confidence): void
+    {
+        if ($confidence <= 0 || $confidence >= 1) {
+            throw new InvalidConfigurationException("Confidence parameter must be greater than 0 and less than 1");
+        }
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    private function validateAssumeNegativeRatingIsLessThan(float $assumeNegativeRatingIsLessThan): void
+    {
+        if ($assumeNegativeRatingIsLessThan <= 0) {
+            throw new InvalidConfigurationException("AssumeNegativeRatingIsLessThan parameter must be greater than 0.");
+        }
     }
 }
