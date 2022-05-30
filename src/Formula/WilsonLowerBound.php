@@ -2,7 +2,6 @@
 
 namespace IlicMiljan\WeightedRatings\Formula;
 
-use IlicMiljan\WeightedRatings\Collection\CollectionInterface;
 use IlicMiljan\WeightedRatings\Helper\MathHelper;
 
 class WilsonLowerBound extends AbstractFormula
