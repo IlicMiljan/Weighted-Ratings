@@ -9,4 +9,4 @@
 /coverage/
 
 # Infection PHP
-./infection-report.txt
+/infection-report.txt
