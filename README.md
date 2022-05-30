@@ -32,4 +32,10 @@ To run Unit Tests inside this library you can use this command:
 ```
 ./vendor/bin/phpunit
 ```
+
+### Infection PHP Metrics:
+- Mutation Score Indicator (MSI): **94%**
+- Mutation Code Coverage: **100%**
+- Covered Code MSI: **94%**
+
  
