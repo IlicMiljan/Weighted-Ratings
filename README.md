@@ -33,7 +33,7 @@ TBD
 ``` php
 $weightCalculator = new RatingWeightCalculator();
 
-$ratingWeight = $calculator->formula(RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND)
+$ratingWeight = $weightCalculator->formula(RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND)
     ->calculateWeight([2,4,6,12,24]);
 ```
 
@@ -44,7 +44,7 @@ $weightCalculator = new RatingWeightCalculator(
     new RatingWeightConfig(RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND, 5, 0.9)
 );
 
-$ratingWeight = $calculator->calculateWeight([2,4,6,12,24]);
+$ratingWeight = $weightCalculator->calculateWeight([2,4,6,12,24,48,92,184,]);
 ```
 
 # Testing
