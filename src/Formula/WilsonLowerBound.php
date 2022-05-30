@@ -14,7 +14,7 @@ class WilsonLowerBound extends AbstractFormula
             return 0.0;
         }
 
-        $ratingsCount = $this->countAllRatings($this->ratings);
+        $ratingsCount = $this->ratings->sum();
         $positiveRatingsCount = $this->countPositiveRatings(
             $this->ratings,
             $this->ratingWeightConfig->getAssumeNegativeRatingIsLessThan()
@@ -41,18 +41,6 @@ class WilsonLowerBound extends AbstractFormula
         $totalCount = 0;
 
         for ($i = $assumeNegativeRatingIsLessThan; $i < $collection->count(); $i++) {
-            $totalCount += $collection->all()[$i];
-        }
-
-        return $totalCount;
-    }
-
-    private function countAllRatings(
-        CollectionInterface $collection
-    ): int {
-        $totalCount = 0;
-
-        for ($i = 0; $i < $collection->count(); $i++) {
             $totalCount += $collection->all()[$i];
         }
 
