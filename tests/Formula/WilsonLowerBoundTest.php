@@ -27,4 +27,15 @@ final class WilsonLowerBoundTest extends TestCase
 
         $this->assertEquals(0.0, $wilsonLowerBound->calculateWeight());
     }
+
+    /**
+     * @throws EmptyCollectionException
+     * @throws InvalidTypeException
+     */
+    public function testCalculateWeightReturnsCorrectValueWhenNoRatings(): void
+    {
+        $wilsonLowerBound = new WilsonLowerBound(new RatingsCountCollection(...[0,0]), new RatingWeightConfig());
+
+        $this->assertEquals(0.0, $wilsonLowerBound->calculateWeight());
+    }
 }

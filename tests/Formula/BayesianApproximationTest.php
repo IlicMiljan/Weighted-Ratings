@@ -23,8 +23,25 @@ final class BayesianApproximationTest extends TestCase
      */
     public function testCalculateWeightReturnsCorrectValue(): void
     {
-        $bayesianApproximation = new BayesianApproximation(new RatingsCountCollection(...[10,15]), new RatingWeightConfig());
+        $bayesianApproximation = new BayesianApproximation(
+            new RatingsCountCollection(...[10,15]),
+            new RatingWeightConfig()
+        );
 
         $this->assertEquals(1.4108568650726, $bayesianApproximation->calculateWeight());
+    }
+
+    /**
+     * @throws EmptyCollectionException
+     * @throws InvalidTypeException
+     */
+    public function testCalculateWeightReturnsCorrectValueWhenNoRatings(): void
+    {
+        $bayesianApproximation = new BayesianApproximation(
+            new RatingsCountCollection(...[0,0]),
+            new RatingWeightConfig()
+        );
+
+        $this->assertEquals(0.0, $bayesianApproximation->calculateWeight());
     }
 }
