@@ -23,9 +23,12 @@ final class WilsonLowerBoundTest extends TestCase
      */
     public function testCalculateWeightReturnsCorrectValue(): void
     {
-        $wilsonLowerBound = new WilsonLowerBound(new RatingsCountCollection(...[10,15]), new RatingWeightConfig());
+        $wilsonLowerBound = new WilsonLowerBound(
+            new RatingsCountCollection(...[10,15,10,15,10]),
+            new RatingWeightConfig()
+        );
 
-        $this->assertEquals(0.0, $wilsonLowerBound->calculateWeight());
+        $this->assertEquals(0.300792247206395, $wilsonLowerBound->calculateWeight());
     }
 
     /**
@@ -34,7 +37,7 @@ final class WilsonLowerBoundTest extends TestCase
      */
     public function testCalculateWeightReturnsCorrectValueWhenNoRatings(): void
     {
-        $wilsonLowerBound = new WilsonLowerBound(new RatingsCountCollection(...[0,0]), new RatingWeightConfig());
+        $wilsonLowerBound = new WilsonLowerBound(new RatingsCountCollection(...[0,0,0,0,0]), new RatingWeightConfig());
 
         $this->assertEquals(0.0, $wilsonLowerBound->calculateWeight());
     }

@@ -15,8 +15,7 @@ class WilsonLowerBound extends AbstractFormula
         }
 
         $ratingsCount = $this->ratings->sum();
-        $positiveRatingsCount = $this->countPositiveRatings(
-            $this->ratings,
+        $positiveRatingsCount = $this->ratings->sumFromIndex(
             $this->ratingWeightConfig->getAssumeNegativeRatingIsLessThan()
         );
 
@@ -31,19 +30,5 @@ class WilsonLowerBound extends AbstractFormula
     private function calculateZ(float $confidence): float
     {
         return MathHelper::percentPointFunction(1 - (1 - $confidence) / 2);
-    }
-
-    // TODO: Create countFromIndex() method in Collection
-    private function countPositiveRatings(
-        CollectionInterface $collection,
-        int $assumeNegativeRatingIsLessThan
-    ): int {
-        $totalCount = 0;
-
-        for ($i = $assumeNegativeRatingIsLessThan; $i < $collection->count(); $i++) {
-            $totalCount += $collection->all()[$i];
-        }
-
-        return $totalCount;
     }
 }
