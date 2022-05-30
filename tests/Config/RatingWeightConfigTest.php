@@ -34,7 +34,7 @@ final class RatingWeightConfigTest extends TestCase
 
         $this->assertNull($ratingWeightConfig->getFormula());
 
-        $ratingWeightConfig->formula($formula);
+        $ratingWeightConfig->setFormula($formula);
 
         $this->assertEquals($formula, $ratingWeightConfig->getFormula());
     }
@@ -58,7 +58,7 @@ final class RatingWeightConfigTest extends TestCase
         $confidence = 0.90;
         $ratingWeightConfig = new RatingWeightConfig();
 
-        $ratingWeightConfig->confidence($confidence);
+        $ratingWeightConfig->setConfidence($confidence);
 
         $this->assertEquals($confidence, $ratingWeightConfig->getConfidence());
     }
@@ -82,7 +82,7 @@ final class RatingWeightConfigTest extends TestCase
         $assumeNegativeRatingIsLessThan = 2;
         $ratingWeightConfig = new RatingWeightConfig();
 
-        $ratingWeightConfig->assumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
+        $ratingWeightConfig->setAssumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
 
         $this->assertEquals($assumeNegativeRatingIsLessThan, $ratingWeightConfig->getAssumeNegativeRatingIsLessThan());
     }
@@ -98,7 +98,7 @@ final class RatingWeightConfigTest extends TestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage("Confidence parameter must be greater than 0 and less than 1.");
 
-        $ratingWeightConfig->confidence($confidence);
+        $ratingWeightConfig->setConfidence($confidence);
     }
 
     /**
@@ -112,7 +112,7 @@ final class RatingWeightConfigTest extends TestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage("Confidence parameter must be greater than 0 and less than 1");
 
-        $ratingWeightConfig->confidence($confidence);
+        $ratingWeightConfig->setConfidence($confidence);
     }
 
     /**
@@ -126,7 +126,7 @@ final class RatingWeightConfigTest extends TestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage("Confidence parameter must be greater than 0 and less than 1");
 
-        $ratingWeightConfig->confidence($confidence);
+        $ratingWeightConfig->setConfidence($confidence);
     }
 
     /**
@@ -140,6 +140,6 @@ final class RatingWeightConfigTest extends TestCase
         $this->expectException(InvalidConfigurationException::class);
         $this->expectExceptionMessage("AssumeNegativeRatingIsLessThan parameter must be greater than 0.");
 
-        $ratingWeightConfig->assumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
+        $ratingWeightConfig->setAssumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
     }
 }

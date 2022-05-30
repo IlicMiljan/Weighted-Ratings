@@ -70,7 +70,7 @@ class RatingWeightCalculator
      */
     public function formula(string $formula): self
     {
-        $this->ratingWeightConfig->formula($formula);
+        $this->ratingWeightConfig->setFormula($formula);
 
         return $this;
     }

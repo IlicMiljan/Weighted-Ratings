@@ -37,7 +37,7 @@ class RatingWeightConfig
     /**
      * @throws InvalidConfigurationException
      */
-    public function formula(string $formula): RatingWeightConfig
+    public function setFormula(string $formula): RatingWeightConfig
     {
         if ($this->formula !== null && $this->formula !== $formula) {
             throw new InvalidConfigurationException("Cannot change formula once it is configured.");
@@ -55,7 +55,7 @@ class RatingWeightConfig
     /**
      * @throws InvalidConfigurationException
      */
-    public function confidence(float $confidence): RatingWeightConfig
+    public function setConfidence(float $confidence): RatingWeightConfig
     {
         $this->validateConfidence($confidence);
         $this->confidence = $confidence;
@@ -70,7 +70,7 @@ class RatingWeightConfig
     /**
      * @throws InvalidConfigurationException
      */
-    public function assumeNegativeRatingIsLessThan(int $assumeNegativeRatingIsLessThan): RatingWeightConfig
+    public function setAssumeNegativeRatingIsLessThan(int $assumeNegativeRatingIsLessThan): RatingWeightConfig
     {
         $this->validateAssumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
         $this->assumeNegativeRatingIsLessThan = $assumeNegativeRatingIsLessThan;
