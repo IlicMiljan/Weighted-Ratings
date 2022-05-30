@@ -46,6 +46,7 @@ interface CollectionInterface
     /**
      * Returns sum of list elements starting from index
      *
+     * @param int $startIndex
      * @return int
      */
     public function sumFromIndex(int $startIndex): int;
