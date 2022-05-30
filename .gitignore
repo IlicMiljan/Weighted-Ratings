@@ -7,3 +7,6 @@
 # PHP Unit
 /.phpunit.result.cache
 /coverage/
+
+# Infection PHP
+./infection-report.txt

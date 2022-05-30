@@ -78,4 +78,9 @@ class RatingWeightCalculator
 
         throw new InvalidConfigurationException("Specified formula is not supported.");
     }
+
+    public function getRatingWeightConfig(): RatingWeightConfig
+    {
+        return $this->ratingWeightConfig;
+    }
 }
