@@ -3,6 +3,7 @@
 namespace IlicMiljan\WeightedRatings\Tests\Collection;
 
 use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
+use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
 use IlicMiljan\WeightedRatings\RatingWeightCalculator;
 use PHPUnit\Framework\TestCase;
 
@@ -69,5 +70,57 @@ final class RatingWeightConfigTest extends TestCase
         $ratingWeightConfig->assumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
 
         $this->assertEquals($assumeNegativeRatingIsLessThan, $ratingWeightConfig->getAssumeNegativeRatingIsLessThan());
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testConfidenceValidationWorksProperlyWhenGreaterThanOne(): void
+    {
+        $confidence = 1.1;
+        $ratingWeightConfig = new RatingWeightConfig();
+
+        $this->expectException(InvalidConfigurationException::class);
+
+        $ratingWeightConfig->confidence($confidence);
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testConfidenceValidationWorksProperlyWhenZero(): void
+    {
+        $confidence = 0;
+        $ratingWeightConfig = new RatingWeightConfig();
+
+        $this->expectException(InvalidConfigurationException::class);
+
+        $ratingWeightConfig->confidence($confidence);
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testConfidenceValidationWorksProperlyWhenLessThanZero(): void
+    {
+        $confidence = -0.1;
+        $ratingWeightConfig = new RatingWeightConfig();
+
+        $this->expectException(InvalidConfigurationException::class);
+
+        $ratingWeightConfig->confidence($confidence);
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testAssumeNegativeRatingIsLessThanValidationWorksProperlyWhenGreaterThanOne(): void
+    {
+        $assumeNegativeRatingIsLessThan = -1;
+        $ratingWeightConfig = new RatingWeightConfig();
+
+        $this->expectException(InvalidConfigurationException::class);
+
+        $ratingWeightConfig->assumeNegativeRatingIsLessThan($assumeNegativeRatingIsLessThan);
     }
 }
