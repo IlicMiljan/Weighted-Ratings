@@ -2,7 +2,6 @@
 
 namespace IlicMiljan\WeightedRatings\Tests\Collection;
 
-use IlicMiljan\WeightedRatings\Collection\RatingsCountCollection;
 use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
 use IlicMiljan\WeightedRatings\Exception\EmptyCollectionException;
 use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
@@ -27,6 +26,9 @@ final class RatingWeightCalculatorTest extends TestCase
         $this->assertEquals($formula, $ratingWeightCalculator->getRatingWeightConfig()->getFormula());
     }
 
+    /**
+     * @throws InvalidConfigurationException
+     */
     public function testFormulaThrowsExceptionWhenResettingFormula(): void
     {
         $initialFormula = RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND;
@@ -70,6 +72,7 @@ final class RatingWeightCalculatorTest extends TestCase
         $ratingWeightCalculator = new RatingWeightCalculator();
 
         $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage("Formula is not configured.");
 
         $ratingWeightCalculator->calculateWeight([10,15]);
     }
@@ -85,6 +88,7 @@ final class RatingWeightCalculatorTest extends TestCase
         $ratingWeightCalculator = new RatingWeightCalculator(new RatingWeightConfig($formula));
 
         $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage("Specified formula is not supported.");
 
         $ratingWeightCalculator->calculateWeight([10,15]);
     }

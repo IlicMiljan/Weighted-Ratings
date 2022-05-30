@@ -74,9 +74,14 @@ final class RatingsCountCollectionTest extends TestCase
      */
     public function testConstructorThrowsExceptionWhenWrongTypeIsPassedIn(): void
     {
-        $this->expectException(InvalidTypeException::class);
+        $wrongElement = "10.5";
 
-        $ratingsCountCollection = new RatingsCountCollection(...[10.5,"15"]);
+        $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage(
+            "Collection element must be of the type int, " . gettype($wrongElement) . " given."
+        );
+
+        $ratingsCountCollection = new RatingsCountCollection(...[$wrongElement]);
     }
 
     /**
@@ -84,10 +89,12 @@ final class RatingsCountCollectionTest extends TestCase
      */
     public function testAddThrowsExceptionWhenWrongTypeIsPassedIn(): void
     {
+        $element = 10.5;
         $ratingsCountCollection = new RatingsCountCollection();
 
         $this->expectException(InvalidTypeException::class);
+        $this->expectExceptionMessage("Collection element must be of the type int, " . gettype($element) . " given.");
 
-        $ratingsCountCollection->add(10.5);
+        $ratingsCountCollection->add($element);
     }
 }

@@ -76,7 +76,7 @@ class RatingWeightConfig
     private function validateConfidence(float $confidence): void
     {
         if ($confidence <= 0 || $confidence >= 1) {
-            throw new InvalidConfigurationException("Confidence parameter must be greater than 0 and less than 1");
+            throw new InvalidConfigurationException("Confidence parameter must be greater than 0 and less than 1.");
         }
     }
 

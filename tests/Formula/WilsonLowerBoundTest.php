@@ -14,6 +14,7 @@ final class WilsonLowerBoundTest extends TestCase
     public function testEmptyCollectionInstantiatedFormulaThrowsException(): void
     {
         $this->expectException(EmptyCollectionException::class);
+        $this->expectExceptionMessage("Collection cannot be empty.");
 
         $wilsonLowerBound = new WilsonLowerBound(new RatingsCountCollection(), new RatingWeightConfig());
     }

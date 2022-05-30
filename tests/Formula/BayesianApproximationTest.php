@@ -14,6 +14,7 @@ final class BayesianApproximationTest extends TestCase
     public function testEmptyCollectionInstantiatedFormulaThrowsException(): void
     {
         $this->expectException(EmptyCollectionException::class);
+        $this->expectExceptionMessage("Collection cannot be empty.");
 
         $bayesianApproximation = new BayesianApproximation(new RatingsCountCollection(), new RatingWeightConfig());
     }
