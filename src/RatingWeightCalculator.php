@@ -25,20 +25,6 @@ class RatingWeightCalculator
     }
 
     /**
-     * @throws InvalidConfigurationException
-     */
-    public function formula(string $formula): self
-    {
-        if ($this->ratingWeightConfig->getFormula() !== null) {
-            throw new InvalidConfigurationException("Cannot change formula once it is configured.");
-        }
-
-        $this->ratingWeightConfig->formula($formula);
-
-        return $this;
-    }
-
-    /**
      * @throws InvalidTypeException
      * @throws Exception\EmptyCollectionException
      * @throws InvalidConfigurationException
@@ -77,6 +63,16 @@ class RatingWeightCalculator
         }
 
         throw new InvalidConfigurationException("Specified formula is not supported.");
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function formula(string $formula): self
+    {
+        $this->ratingWeightConfig->formula($formula);
+
+        return $this;
     }
 
     public function getRatingWeightConfig(): RatingWeightConfig

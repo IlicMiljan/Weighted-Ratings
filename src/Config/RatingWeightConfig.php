@@ -34,8 +34,15 @@ class RatingWeightConfig
         return $this->formula;
     }
 
+    /**
+     * @throws InvalidConfigurationException
+     */
     public function formula(string $formula): RatingWeightConfig
     {
+        if ($this->formula !== null && $this->formula !== $formula) {
+            throw new InvalidConfigurationException("Cannot change formula once it is configured.");
+        }
+
         $this->formula = $formula;
         return $this;
     }
