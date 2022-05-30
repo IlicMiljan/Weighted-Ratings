@@ -4,7 +4,7 @@ namespace IlicMiljan\WeightedRatings\Formula;
 
 use IlicMiljan\WeightedRatings\Helper\MathHelper;
 
-class BayesianApproximation extends AbstractFormula
+final class BayesianApproximation extends AbstractFormula
 {
 
     public function calculateWeight(): float

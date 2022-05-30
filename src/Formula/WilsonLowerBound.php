@@ -4,7 +4,7 @@ namespace IlicMiljan\WeightedRatings\Formula;
 
 use IlicMiljan\WeightedRatings\Helper\MathHelper;
 
-class WilsonLowerBound extends AbstractFormula
+final class WilsonLowerBound extends AbstractFormula
 {
 
     public function calculateWeight(): float

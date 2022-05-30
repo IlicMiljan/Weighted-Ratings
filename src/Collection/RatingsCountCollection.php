@@ -4,7 +4,7 @@ namespace IlicMiljan\WeightedRatings\Collection;
 
 use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 
-class RatingsCountCollection implements CollectionInterface
+final class RatingsCountCollection implements CollectionInterface
 {
     /** @var int[] $list */
     private array $list;

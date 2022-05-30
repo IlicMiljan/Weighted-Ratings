@@ -4,7 +4,7 @@ namespace IlicMiljan\WeightedRatings\Config;
 
 use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
 
-class RatingWeightConfig
+final class RatingWeightConfig
 {
     private const DEFAULT_ASSUME_NEGATIVE_RATING_IS_LESS_THAN = 3;
     private const DEFAULT_CONFIDENCE = 0.95;
