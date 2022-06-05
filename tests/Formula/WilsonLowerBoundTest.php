@@ -29,7 +29,7 @@ final class WilsonLowerBoundTest extends TestCase
             new RatingWeightConfig()
         );
 
-        $this->assertEquals(0.45745720659807504, $wilsonLowerBound->calculateWeight());
+        $this->assertEquals(0.300792247206395, $wilsonLowerBound->calculateWeight());
     }
 
     /**
