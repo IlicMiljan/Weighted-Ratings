@@ -14,8 +14,10 @@ final class WilsonLowerBound extends AbstractFormula
 
         $ratingsCount = $this->ratings->sum();
         $positiveRatingsCount = $this->ratings->sumFromIndex(
-            $this->ratingWeightConfig->getAssumeNegativeRatingIsLessThan()
+            $this->ratingWeightConfig->getAssumeNegativeRatingIsLessThan() - 1
         );
+
+        echo $positiveRatingsCount;
 
         $z = $this->calculateZ($this->ratingWeightConfig->getConfidence());
         $positiveRatingRatio = 1.0 * $positiveRatingsCount / $ratingsCount;
