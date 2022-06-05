@@ -1,7 +1,5 @@
 # Weighted Ratings
 
-[![stability-wip](https://img.shields.io/badge/stability-wip-lightgrey.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#work-in-progress)
-
 A lightweight PHP library for calculating the **Wilson Lower Bound Score** and 
 **Bayesian Approximation** weights for sorting algorithms based on user feedback.
 
