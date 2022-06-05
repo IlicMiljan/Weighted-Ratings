@@ -2,10 +2,8 @@
 
 namespace IlicMiljan\WeightedRatings\Tests\Collection;
 
-use IlicMiljan\WeightedRatings\Collection\RatingsCountCollection;
 use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
 use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
-use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 use IlicMiljan\WeightedRatings\RatingWeightCalculator;
 use PHPUnit\Framework\TestCase;
 
@@ -29,7 +27,10 @@ final class RatingWeightConfigTest extends TestCase
         $this->assertEquals($formula, $ratingWeightConfig->getFormula());
     }
 
-    public function testFormulaSetsProperValue(): void
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testSetFormulaSetsProperValue(): void
     {
         $formula = RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND;
         $ratingWeightConfig = new RatingWeightConfig();
@@ -39,6 +40,22 @@ final class RatingWeightConfigTest extends TestCase
         $ratingWeightConfig->setFormula($formula);
 
         $this->assertEquals($formula, $ratingWeightConfig->getFormula());
+    }
+
+    /**
+     * @throws InvalidConfigurationException
+     */
+    public function testSetFormulaThrowsExceptionWhenReplacingFormula(): void
+    {
+        $formula = RatingWeightCalculator::FORMULA_WILSON_LOWER_BOUND;
+        $changedFormula = RatingWeightCalculator::FORMULA_BAYESIAN_APPROXIMATION;
+
+        $ratingWeightConfig = new RatingWeightConfig($formula);
+
+        $this->expectException(InvalidConfigurationException::class);
+        $this->expectExceptionMessage("Cannot change formula once it is configured.");
+
+        $ratingWeightConfig->setFormula($changedFormula);
     }
 
     /**
@@ -55,7 +72,7 @@ final class RatingWeightConfigTest extends TestCase
     /**
      * @throws InvalidConfigurationException
      */
-    public function testConfidenceSetsProperValue(): void
+    public function testSetConfidenceSetsProperValue(): void
     {
         $confidence = 0.90;
         $ratingWeightConfig = new RatingWeightConfig();
@@ -79,7 +96,7 @@ final class RatingWeightConfigTest extends TestCase
     /**
      * @throws InvalidConfigurationException
      */
-    public function testAssumeNegativeRatingIsLessThanSetsProperValue(): void
+    public function testSetAssumeNegativeRatingIsLessThanSetsProperValue(): void
     {
         $assumeNegativeRatingIsLessThan = 2;
         $ratingWeightConfig = new RatingWeightConfig();
