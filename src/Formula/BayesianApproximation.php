@@ -12,19 +12,20 @@ final class BayesianApproximation extends AbstractFormula
             return 0.0;
         }
 
-        $K = $this->ratings->count();
-        $z = $this->calculateZ($this->ratingWeightConfig->getConfidence());
-        $N = array_sum($this->ratings->all());
+        $ratingsCount = $this->ratings->count();
+        $medianOfDistribution = $this->calculateZ($this->ratingWeightConfig->getConfidence());
+        $ratingsSum = $this->ratings->sum();
 
         $firstPart = 0.0;
         $secondPart = 0.0;
 
         foreach ($this->ratings->all() as $index => $value) {
-            $firstPart += ($index + 1) * ($value + 1) / ($N + $K);
-            $secondPart += ($index + 1) * ($index + 1) * ($value + 1) / ($N + $K);
+            $firstPart += ($index + 1) * ($value + 1) / ($ratingsSum + $ratingsCount);
+            $secondPart += ($index + 1) * ($index + 1) * ($value + 1) / ($ratingsSum + $ratingsCount);
         }
 
-        return $firstPart - $z * sqrt(($secondPart - $firstPart ** 2) / ($N + $K + 1));
+        return $firstPart - $medianOfDistribution
+            * sqrt(($secondPart - $firstPart ** 2) / ($ratingsSum + $ratingsCount + 1));
     }
 
     private function calculateZ(float $confidence): float
