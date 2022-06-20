@@ -17,12 +17,13 @@ final class WilsonLowerBound extends AbstractFormula
             $this->ratingWeightConfig->getAssumeNegativeRatingIsLessThan()
         );
 
-        $z = $this->calculateZ($this->ratingWeightConfig->getConfidence());
+        $medianOfDistribution = $this->calculateZ($this->ratingWeightConfig->getConfidence());
         $positiveRatingRatio = 1.0 * $positiveRatingsCount / $ratingsCount;
 
-        return ($positiveRatingRatio + $z * $z / (2 * $ratingsCount) - $z
-                * sqrt(($positiveRatingRatio * (1 - $positiveRatingRatio) + $z
-                        * $z / (4 * $ratingsCount)) / $ratingsCount)) / (1 + $z * $z / $ratingsCount);
+        return ($positiveRatingRatio + $medianOfDistribution * $medianOfDistribution / (2 * $ratingsCount)
+                - $medianOfDistribution * sqrt(($positiveRatingRatio * (1 - $positiveRatingRatio)
+                + $medianOfDistribution * $medianOfDistribution / (4 * $ratingsCount)) / $ratingsCount))
+                / (1 + $medianOfDistribution * $medianOfDistribution / $ratingsCount);
     }
 
     private function calculateZ(float $confidence): float
