@@ -2,8 +2,6 @@
 
 namespace IlicMiljan\WeightedRatings\Formula;
 
-use IlicMiljan\WeightedRatings\Helper\MathHelper;
-
 final class Average extends AbstractFormula
 {
     public function calculateWeight(): float
