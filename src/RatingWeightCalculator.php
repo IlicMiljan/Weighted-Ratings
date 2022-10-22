@@ -8,11 +8,13 @@ use IlicMiljan\WeightedRatings\Config\RatingWeightConfig;
 use IlicMiljan\WeightedRatings\Exception\InvalidConfigurationException;
 use IlicMiljan\WeightedRatings\Exception\InvalidTypeException;
 use IlicMiljan\WeightedRatings\Formula\AbstractFormula;
+use IlicMiljan\WeightedRatings\Formula\Average;
 use IlicMiljan\WeightedRatings\Formula\BayesianApproximation;
 use IlicMiljan\WeightedRatings\Formula\WilsonLowerBound;
 
 class RatingWeightCalculator
 {
+    public const FORMULA_AVERAGE = 'average';
     public const FORMULA_WILSON_LOWER_BOUND = 'wilson_lower_bound';
     public const FORMULA_BAYESIAN_APPROXIMATION = 'bayesian_approximation';
 
@@ -46,6 +48,13 @@ class RatingWeightCalculator
     {
         if ($this->ratingWeightConfig->getFormula() === null) {
             throw new InvalidConfigurationException("Formula is not configured.");
+        }
+
+        if ($this->ratingWeightConfig->getFormula() === self::FORMULA_AVERAGE) {
+            return new Average(
+                $collection,
+                $this->ratingWeightConfig
+            );
         }
 
         if ($this->ratingWeightConfig->getFormula() === self::FORMULA_WILSON_LOWER_BOUND) {
